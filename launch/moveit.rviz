@@ -317,6 +317,7 @@ Visualization Manager:
           Value: true
         wrist_roll_link:
           Value: true
+      Marker Alpha: 1
       Marker Scale: 0.20000000298023224
       Name: TF
       Show Arrows: true
@@ -360,19 +361,19 @@ Visualization Manager:
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
         X: 0.11356700211763382
         Y: 0.10592000186443329
-        Z: 2.2351800055275817e-7
+        Z: 2.2351800055275817e-07
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5897969007492065
+      Pitch: 0.06479690968990326
       Target Frame: world
-      Value: XYOrbit (rviz)
-      Yaw: 0.21676532924175262
+      Yaw: 1.8412716388702393
     Saved: ~
 Window Geometry:
   Displays:
@@ -391,4 +392,4 @@ Window Geometry:
     collapsed: false
   Width: 1853
   X: 67
-  Y: 27
+  Y: 0
