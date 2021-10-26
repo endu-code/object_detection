@@ -1,0 +1,4 @@
+<launch>
+    <node name="videocapture" pkg="endu_robotics" type="videocapture" output="screen">
+    </node>
+</launch>

@@ -37,10 +37,12 @@ include_directories(
 add_executable(braccio_test_manipulation src/braccio_test_manipulation.cpp)
 add_executable(parse_publish src/parse_and_publish.cpp)
 add_executable(camera_test src/camera_test.cpp)
+add_executable(videocapture src/videocapture.cpp)
 
 add_dependencies(braccio_test_manipulation ${braccio_test_manipulation_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(parse_publish ${parse_and_publish_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(camera_test ${camera_test_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(videocapture ${videocapture_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(braccio_test_manipulation
   ${catkin_LIBRARIES}
@@ -49,6 +51,10 @@ target_link_libraries(parse_publish
   ${catkin_LIBRARIES}
 )
 target_link_libraries(camera_test
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+)
+target_link_libraries(videocapture
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
 )
