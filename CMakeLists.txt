@@ -29,6 +29,7 @@ find_package(OpenCV REQUIRED)
 catkin_package()
 
 include_directories(
+  include
   ${OpenCV_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
 )
@@ -37,7 +38,7 @@ include_directories(
 add_executable(braccio_test_manipulation src/braccio_test_manipulation.cpp)
 add_executable(parse_publish src/parse_and_publish.cpp)
 add_executable(camera_test src/camera_test.cpp)
-add_executable(videocapture src/videocapture.cpp)
+add_executable(videocapture src/videocapture.cpp src/imageCapture.cpp src/imageProcess.cpp src/shapeHandling.cpp)
 
 add_dependencies(braccio_test_manipulation ${braccio_test_manipulation_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(parse_publish ${parse_and_publish_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
