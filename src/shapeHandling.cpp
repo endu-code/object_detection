@@ -23,6 +23,7 @@ void shapeHandlingThread(cv::Mat* processed, std::vector<std::vector<cv::Point>>
     shapes straight("straight", "/home/dario/catkin_ws/src/endu_robotics/sample/Straight Piece.JPG", 0, 0, 255);
 
     while (ros::ok) {
+        tmp_contours.
         tmp_contours = *contours;
         tmp = *processed;
         tmp_hierarchy = *hierarchy;
@@ -48,18 +49,18 @@ void shapeHandlingThread(cv::Mat* processed, std::vector<std::vector<cv::Point>>
                             cv::putText(drawnEdges, cloud.getName(), tmp_contours.at(i).at(0), 1, 2, cloud.getColor());
                             }
                         }
-                    // else if (result[1] == std::min(result[1], (std::min(result[0], result[2])))) {
-                    //     if (result[1] < 0.01) {
-                    //         cv::drawContours(drawnEdges, tmp_contours, (int)i, cross.getColor(), 2, cv::LINE_8, tmp_hierarchy, 0);
-                    //         cv::putText(drawnEdges, cross.getName(), tmp_contours.at(i).at(0), 1, 2, cross.getColor());
-                    //         }
-                    //     }
-                    // else if (result[2] == std::min(result[2], (std::min(result[1], result[0])))) {
-                    //     if (result[2] < 0.01) {
-                    //         cv::drawContours(drawnEdges, tmp_contours, (int)i, straight.getColor(), 2, cv::LINE_8, tmp_hierarchy, 0);
-                    //         cv::putText(drawnEdges, straight.getName(), tmp_contours.at(i).at(0), 1, 2, straight.getColor());
-                    //         }
-                        // }
+                    else if (result[1] == std::min(result[1], (std::min(result[0], result[2])))) {
+                        if (result[1] < 0.01) {
+                            cv::drawContours(drawnEdges, tmp_contours, (int)i, cross.getColor(), 2, cv::LINE_8, tmp_hierarchy, 0);
+                            cv::putText(drawnEdges, cross.getName(), tmp_contours.at(i).at(0), 1, 2, cross.getColor());
+                            }
+                        }
+                    else if (result[2] == std::min(result[2], (std::min(result[1], result[0])))) {
+                        if (result[2] < 0.01) {
+                            cv::drawContours(drawnEdges, tmp_contours, (int)i, straight.getColor(), 2, cv::LINE_8, tmp_hierarchy, 0);
+                            cv::putText(drawnEdges, straight.getName(), tmp_contours.at(i).at(0), 1, 2, straight.getColor());
+                            }
+                        }
                     }
                 }
             }
@@ -68,8 +69,6 @@ void shapeHandlingThread(cv::Mat* processed, std::vector<std::vector<cv::Point>>
  //           cv::namedWindow("drawn edges", cv::WINDOW_AUTOSIZE);
             cv::imshow("drawn edges", drawnEdges);
             cv::waitKey(1);
-            tmp_contours.resize(1);
-            tmp_hierarchy.resize(1);
             }
         }
 
