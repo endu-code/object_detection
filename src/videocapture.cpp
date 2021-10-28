@@ -20,11 +20,12 @@ int main(int argc, char** argv) {
 
     cv::Mat captureImage, processImage;
     std::vector<std::vector<cv::Point>> contours;
+    std::vector<cv::Vec4i> hierarchy;
     std::mutex capMutex, procMutex;
 
     std::thread t_captureImage(imageCaptureThread, &captureImage, &capMutex);
-    std::thread t_processImage(imageProcessThread, &captureImage, &processImage, &contours, &capMutex, &procMutex);
-    std::thread t_shapeHandling(shapeHandlingThread, &processImage, &contours, &procMutex);
+    std::thread t_processImage(imageProcessThread, &captureImage, &processImage, &hierarchy, &contours, &capMutex, &procMutex);
+    std::thread t_shapeHandling(shapeHandlingThread, &processImage, &contours, &hierarchy, &procMutex);
     while (ros::ok) {
         ros::spinOnce();
         loop_rate.sleep();

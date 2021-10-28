@@ -60,7 +60,7 @@ int main(int argc, char** argv)
         frame = TestImage;
 
         cvtColor(frame, frame_gray, COLOR_BGR2GRAY);
-        threshold(frame_gray, frame_bin, 175, 255, 1);
+        threshold(frame_gray, frame_bin, 150, 255, 1);
         blur(frame_bin, frame_bin, Size(3, 3));
         Canny(frame_bin, detected_edges, 0, 0, 3);
 
