@@ -4,7 +4,8 @@
 #include <ros/ros.h>
 #include "opencv2/opencv.hpp"
 #include <mutex>
+#include <atomic>
 
-void imageCaptureThread(cv::Mat *capture, std::mutex *capMutex);
+void imageCaptureThread(cv::Mat *capture, std::mutex *capMutex, std::atomic<bool> *exitsignal);
 
 #endif

@@ -10,6 +10,8 @@
 #include "imageCapture.h"
 #include "imageProcess.h"
 #include "shapeHandling.h"
+#include "checkExit.h"
+#include <atomic>
 
 int main(int argc, char** argv) {
 
@@ -17,20 +19,26 @@ int main(int argc, char** argv) {
     ROS_WARN("init done!");
     ros::NodeHandle nh_;
     ros::Rate loop_rate(10);
+    std::atomic<bool> exitsignal{ false };
 
     cv::Mat captureImage, processImage;
     std::vector<std::vector<cv::Point>> contours;
     std::vector<cv::Vec4i> hierarchy;
     std::mutex capMutex, procMutex;
 
-    std::thread t_captureImage(imageCaptureThread, &captureImage, &capMutex);
-    std::thread t_processImage(imageProcessThread, &captureImage, &processImage, &hierarchy, &contours, &capMutex, &procMutex);
-    std::thread t_shapeHandling(shapeHandlingThread, &processImage, &contours, &hierarchy, &procMutex);
-    while (ros::ok) {
+    std::thread t_captureImage(imageCaptureThread, &captureImage, &capMutex, &exitsignal);
+    std::thread t_processImage(imageProcessThread, &captureImage, &processImage, &hierarchy, &contours, &capMutex, &procMutex, &exitsignal);
+    std::thread t_shapeHandling(shapeHandlingThread, &processImage, &contours, &hierarchy, &procMutex, &exitsignal);
+    std::thread t_checkExit(checkExit, &exitsignal);
+    while (ros::ok && !exitsignal) {
         ros::spinOnce();
         loop_rate.sleep();
         }
     t_captureImage.join();
     t_processImage.join();
+    t_shapeHandling.join();
+    t_checkExit.join();
+
+    nh_.shutdown();
     return 0;
     }

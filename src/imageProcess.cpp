@@ -8,14 +8,14 @@
 #include <mutex>
 #include <chrono>
 
-void imageProcessThread(cv::Mat* capture, cv::Mat *processed, std::vector<cv::Vec4i> *hierarchy, std::vector<std::vector<cv::Point>> *contours, std::mutex* capMutex, std::mutex* procMutex) {
+void imageProcessThread(cv::Mat* capture, cv::Mat *processed, std::vector<cv::Vec4i> *hierarchy, std::vector<std::vector<cv::Point>> *contours, std::mutex* capMutex, std::mutex* procMutex, std::atomic<bool> *exitsignal) {
     ROS_WARN_STREAM("Started Process Thread!");
     cv::Mat newImage, tmp;
     std::vector<std::vector<cv::Point>> tmp_contours;
     std::vector<cv::Vec4i> tmp_hierarchy;
 
 
-    while (ros::ok) {
+    while (ros::ok && !(*exitsignal)) {
 
         tmp_contours.clear();
         tmp_hierarchy.clear();
@@ -54,5 +54,5 @@ void imageProcessThread(cv::Mat* capture, cv::Mat *processed, std::vector<cv::Ve
             cv::waitKey(1);
             }
         }
-    return;
+    ROS_WARN_STREAM("Stopped Process Thread!");
     }

@@ -7,7 +7,7 @@
 #include <functional>
 #include <mutex>
 
-void imageCaptureThread(cv::Mat* capture, std::mutex* capMutex) {
+void imageCaptureThread(cv::Mat* capture, std::mutex* capMutex, std::atomic<bool> *exitsignal) {
     ROS_WARN_STREAM("imageCaptureThread: Started Capture Thread!");
 
     cv::VideoCapture cap;
@@ -19,7 +19,7 @@ void imageCaptureThread(cv::Mat* capture, std::mutex* capMutex) {
         }
     ROS_INFO_STREAM("imageCaptureThread: Camera opened successfully");
 
-    while (ros::ok) {
+    while (ros::ok && !(*exitsignal)) {
         try {
             cv::Mat newImage;
             cap.grab();
