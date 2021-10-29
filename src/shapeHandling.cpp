@@ -5,10 +5,8 @@
 #include "opencv2/imgcodecs.hpp"
 #include </home/dario/catkin_ws/src/endu_robotics/include/shapes.h>
 
-void shapeHandlingThread(cv::Mat* processed, std::vector<std::vector<cv::Point>>* contours, std::vector<cv::Vec4i>* hierarchy, std::mutex* procMutex) {
+void shapeHandlingThread(cv::Mat* processed_shape, std::vector<std::vector<cv::Point>>* contours_shape, std::vector<cv::Vec4i>* hierarchy_shape, std::mutex* procMutex) {
     ROS_WARN_STREAM("Started Shape Handling Thread!");
-    cv::Mat TestImage = cv::imread("/home/dario/catkin_ws/src/endu_robotics/sample/Test.png");
-    cv::Mat* TestImagePointer = &TestImage;
     cv::Mat drawnEdges, tmp;
     std::vector<std::vector<cv::Point>> tmp_contours;
     std::vector<cv::Vec4i> tmp_hierarchy;
@@ -16,6 +14,7 @@ void shapeHandlingThread(cv::Mat* processed, std::vector<std::vector<cv::Point>>
     result[0] = NULL;
     result[1] = NULL;
     result[2] = NULL;
+    
 
 
     shapes cloud("cloud", "/home/dario/catkin_ws/src/endu_robotics/sample/Cloud Piece.JPG", 255, 0, 0);
@@ -23,11 +22,13 @@ void shapeHandlingThread(cv::Mat* processed, std::vector<std::vector<cv::Point>>
     shapes straight("straight", "/home/dario/catkin_ws/src/endu_robotics/sample/Straight Piece.JPG", 0, 0, 255);
 
     while (ros::ok) {
-        tmp_contours.
-        tmp_contours = *contours;
-        tmp = *processed;
-        tmp_hierarchy = *hierarchy;
+
         drawnEdges = cv::Mat::zeros(tmp.size(), CV_8UC3);
+        procMutex->lock();
+        tmp_contours = *contours_shape;
+        tmp = *processed_shape;
+        tmp_hierarchy = *hierarchy_shape;
+        procMutex->unlock();
         result[0] = NULL;
         result[1] = NULL;
         result[2] = NULL;
@@ -69,6 +70,7 @@ void shapeHandlingThread(cv::Mat* processed, std::vector<std::vector<cv::Point>>
  //           cv::namedWindow("drawn edges", cv::WINDOW_AUTOSIZE);
             cv::imshow("drawn edges", drawnEdges);
             cv::waitKey(1);
+            ROS_INFO_STREAM("shapeHandlingThread: image shown");
             }
         }
 

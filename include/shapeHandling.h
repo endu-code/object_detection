@@ -8,6 +8,6 @@
 #include "opencv2/imgcodecs.hpp"
 
 
-void shapeHandlingThread(cv::Mat *processed, std::vector<std::vector<cv::Point>> *contours, std::vector<cv::Vec4i> *hierarchy, std::mutex *procMutex);
+void shapeHandlingThread(cv::Mat* processed_shape, std::vector<std::vector<cv::Point>>* contours_shape, std::vector<cv::Vec4i>* hierarchy_shape, std::mutex* procMutex);
 
 #endif
