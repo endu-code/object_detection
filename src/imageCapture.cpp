@@ -7,8 +7,12 @@
 #include <functional>
 #include <mutex>
 
-void imageCaptureThread(cv::Mat* capture, std::mutex* capMutex, std::atomic<bool> *exitsignal) {
+void imageCaptureThread(cv::Mat* capture, 
+    std::mutex* capMutex, 
+    std::atomic<bool> *exitsignal) { 
+        
     ROS_WARN_STREAM("imageCaptureThread: Started Capture Thread!");
+    cv::Mat testImage = cv::imread("/home/dario/catkin_ws/src/endu_robotics/sample/Test.png");
 
     cv::VideoCapture cap;
     cap.open(0, cv::CAP_ANY);

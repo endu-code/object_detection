@@ -6,6 +6,8 @@
 #include <mutex>
 #include <atomic>
 
-void imageCaptureThread(cv::Mat *capture, std::mutex *capMutex, std::atomic<bool> *exitsignal);
+void imageCaptureThread(cv::Mat *capture, 
+    std::mutex *capMutex, 
+    std::atomic<bool> *exitsignal);
 
-#endif
+#endif 

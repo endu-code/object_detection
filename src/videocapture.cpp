@@ -24,12 +24,37 @@ int main(int argc, char** argv) {
     cv::Mat captureImage, processImage;
     std::vector<std::vector<cv::Point>> contours;
     std::vector<cv::Vec4i> hierarchy;
-    std::mutex capMutex, procMutex;
+    std::mutex capMutex, procMutex, moMutex;
+    std::vector<cv::Moments> moments;
+    std::vector<cv::Point2f> centerMass;
 
-    std::thread t_captureImage(imageCaptureThread, &captureImage, &capMutex, &exitsignal);
-    std::thread t_processImage(imageProcessThread, &captureImage, &processImage, &hierarchy, &contours, &capMutex, &procMutex, &exitsignal);
-    std::thread t_shapeHandling(shapeHandlingThread, &processImage, &contours, &hierarchy, &procMutex, &exitsignal);
-    std::thread t_checkExit(checkExit, &exitsignal);
+    std::thread t_captureImage(imageCaptureThread,
+        &captureImage,
+        &capMutex,
+        &exitsignal);
+
+    std::thread t_processImage(imageProcessThread,
+        &captureImage,
+        &processImage,
+        &hierarchy,
+        &contours,
+        &centerMass,
+        &capMutex,
+        &procMutex,
+        &exitsignal);
+
+    std::thread t_shapeHandling(shapeHandlingThread,
+        &processImage,
+        &contours,
+        &hierarchy,
+        &centerMass,
+        &procMutex,
+        &moMutex,
+        &exitsignal);
+
+    std::thread t_checkExit(checkExit,
+        &exitsignal);
+
     while (ros::ok && !exitsignal) {
         ros::spinOnce();
         loop_rate.sleep();
