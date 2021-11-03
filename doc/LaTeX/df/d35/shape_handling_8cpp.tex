@@ -1,0 +1,44 @@
+\hypertarget{shape_handling_8cpp}{}\doxysection{shape\+Handling.\+cpp File Reference}
+\label{shape_handling_8cpp}\index{shapeHandling.cpp@{shapeHandling.cpp}}
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}opencv2/opencv.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/highgui.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/imgproc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/imgcodecs.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$shapes.\+h$>$}\newline
+Include dependency graph for shape\+Handling.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/da6/shape_handling_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{shape_handling_8cpp_a950e49c7dd3cba7cee3bf47f57b451d0}{shape\+Handling\+Thread}} (cv\+::\+Mat $\ast$processed\+\_\+shape, std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ $\ast$contours\+\_\+shape, std\+::vector$<$ cv\+::\+Vec4i $>$ $\ast$hierarchy\+\_\+shape, std\+::vector$<$ cv\+::\+Point2f $>$ $\ast$center\+Mass, std\+::mutex $\ast$proc\+Mutex, std\+::mutex $\ast$mo\+Mutex, std\+::atomic$<$ bool $>$ $\ast$exitsignal)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Dario Aeschlimann (\href{mailto:dario.aeschlimann@paoluzzo.ch}{\texttt{ dario.\+aeschlimann@paoluzzo.\+ch}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+01-\/11-\/2021
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{shape_handling_8cpp_a950e49c7dd3cba7cee3bf47f57b451d0}\label{shape_handling_8cpp_a950e49c7dd3cba7cee3bf47f57b451d0}} 
+\index{shapeHandling.cpp@{shapeHandling.cpp}!shapeHandlingThread@{shapeHandlingThread}}
+\index{shapeHandlingThread@{shapeHandlingThread}!shapeHandling.cpp@{shapeHandling.cpp}}
+\doxysubsubsection{\texorpdfstring{shapeHandlingThread()}{shapeHandlingThread()}}
+{\footnotesize\ttfamily void shape\+Handling\+Thread (\begin{DoxyParamCaption}\item[{cv\+::\+Mat $\ast$}]{processed\+\_\+shape,  }\item[{std\+::vector$<$ std\+::vector$<$ cv\+::\+Point $>$$>$ $\ast$}]{contours\+\_\+shape,  }\item[{std\+::vector$<$ cv\+::\+Vec4i $>$ $\ast$}]{hierarchy\+\_\+shape,  }\item[{std\+::vector$<$ cv\+::\+Point2f $>$ $\ast$}]{center\+Mass,  }\item[{std\+::mutex $\ast$}]{proc\+Mutex,  }\item[{std\+::mutex $\ast$}]{mo\+Mutex,  }\item[{std\+::atomic$<$ bool $>$ $\ast$}]{exitsignal }\end{DoxyParamCaption})}
+
