@@ -1,4 +1,0 @@
-<launch>
-    <node name="camera_test" pkg="endu_robotics" type="camera_test" output="screen">
-    </node>
-</launch>

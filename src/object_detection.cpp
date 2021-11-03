@@ -1,18 +1,28 @@
+/**
+ * @file videocapture.cpp
+ * @author Dario Aeschlimann (dario.aeschlimann@paoluzzo.ch)
+ * @brief 
+ * @version 0.1
+ * @date 03-11-2021
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ * @page module_name Videocapture
+ */
 #include <ros/ros.h>
-#include "opencv2/opencv.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/imgproc.hpp"
-#include "opencv2/imgcodecs.hpp"
-#include <iostream>
-#include <future>
 #include <thread>
-#include <functional>
 #include "imageCapture.h"
 #include "imageProcess.h"
 #include "shapeHandling.h"
 #include "checkExit.h"
 #include <atomic>
-
+/**
+ * @brief 
+ * 
+ * @param argc 
+ * @param argv 
+ * @return int 
+ */
 int main(int argc, char** argv) {
 
     ros::init(argc, argv, "videocapture");

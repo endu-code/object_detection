@@ -14,7 +14,7 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include "opencv2/imgcodecs.hpp"
-#include </home/dario/catkin_ws/src/endu_robotics/include/shapes.h>
+#include <shapes.h>
 
 void shapeHandlingThread(cv::Mat* processed_shape,
     std::vector<std::vector<cv::Point>>* contours_shape,
@@ -39,11 +39,6 @@ void shapeHandlingThread(cv::Mat* processed_shape,
     shapes cross("cross", "/home/dario/catkin_ws/src/endu_robotics/sample/Cross Piece.JPG", 0, 255, 0);
     shapes straight("straight", "/home/dario/catkin_ws/src/endu_robotics/sample/Straight Piece.JPG", 0, 0, 255);
 
-    /**
-     * @brief 
-     * 
-     */
-
     while (ros::ok && !(*exitsignal)) {
 
         drawnEdges = cv::Mat::zeros(tmp.size(), CV_8UC3);
@@ -57,25 +52,8 @@ void shapeHandlingThread(cv::Mat* processed_shape,
         result[1] = 1;
         result[2] = 1;
 
-        /**
-         * @brief 
-         * 
-         */
-
         if (!tmp_contours.empty() && !tmp.empty()) {
-
-            /**
-             * @brief 
-             * 
-             */
-            
             for (int i = 0; i < tmp_contours.size(); i++) {
-
-                /**
-                 * @brief 
-                 * 
-                 */
-
                 if (cv::contourArea(tmp_contours.at(i)) > 2000 && cv::contourArea(tmp_contours.at(i)) < 20000) {
                     result[0] = cv::matchShapes(tmp_contours[i], cloud.getContour()[0], 1, 0);
                     result[1] = cv::matchShapes(tmp_contours[i], cross.getContour()[0], 1, 0);
