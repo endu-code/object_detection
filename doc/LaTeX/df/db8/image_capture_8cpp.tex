@@ -1,0 +1,31 @@
+\hypertarget{image_capture_8cpp}{}\doxysection{image\+Capture.\+cpp File Reference}
+\label{image_capture_8cpp}\index{imageCapture.cpp@{imageCapture.cpp}}
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}opencv2/opencv.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/highgui.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/imgproc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/imgcodecs.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+Include dependency graph for image\+Capture.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/dab/image_capture_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{image_capture_8cpp_ae6777764088593e5132310d7b27eb58a}{image\+Capture\+Thread}} (cv\+::\+Mat $\ast$capture, std\+::mutex $\ast$cap\+Mutex, std\+::atomic$<$ bool $>$ $\ast$exitsignal)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{image_capture_8cpp_ae6777764088593e5132310d7b27eb58a}\label{image_capture_8cpp_ae6777764088593e5132310d7b27eb58a}} 
+\index{imageCapture.cpp@{imageCapture.cpp}!imageCaptureThread@{imageCaptureThread}}
+\index{imageCaptureThread@{imageCaptureThread}!imageCapture.cpp@{imageCapture.cpp}}
+\doxysubsubsection{\texorpdfstring{imageCaptureThread()}{imageCaptureThread()}}
+{\footnotesize\ttfamily void image\+Capture\+Thread (\begin{DoxyParamCaption}\item[{cv\+::\+Mat $\ast$}]{capture,  }\item[{std\+::mutex $\ast$}]{cap\+Mutex,  }\item[{std\+::atomic$<$ bool $>$ $\ast$}]{exitsignal }\end{DoxyParamCaption})}
+
