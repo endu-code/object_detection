@@ -1,4 +1,3 @@
-@mainpage Object detection for Robotics
 
 
 This Package is meant to serve as a template for object detection for a robotics application.
@@ -8,7 +7,40 @@ will be send via ROS-Message for other ROS nodes to subscribe to.
 
 The Goal is that those coordinates can be used for picking up workpieces in an industrial application.
 
+<p align="center">
+  <img src="doc/img/Pao_Logo.jpg" />
+</p>
 
-@author Dario Aeschlimann (dario.aeschlimann@paoluzzo.ch)
 
-![Paoluzzo Logo](src/object_detection/doc/img/Pao_Logo.jpg)
+### Installation
+
+#### Ubuntu 20.04 / ROS Noetic
+
+**Install ROS**
+
+follow the installation guide [here](http://wiki.ros.org/noetic/Installation) for installing ROS
+
+**Install OpenCV**
+
+Follow [this Tutorial](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html) for installing OpenCV
+
+**Install Object Detection Package**
+Set up a catkin workspace following [this Tutorial](http://wiki.ros.org/catkin/Tutorials), then clone the repository into the src/ folder inside your catkin workspace.
+Use catkin_make to compile.
+
+```sh
+$ cd ~/catkin_ws/src
+$ git clone -b master git@github.com:endu-code/object_detection.git
+$ cd ..
+$ catkin_make
+$ source devel/setup.bash
+```
+**Run the code**
+
+roslaunch object_detection object_detection.launch will run the example code.
+
+```sh
+$ roslaunch object_detection object_detection.launch
+```
+
+**Adapt the code for your needs**

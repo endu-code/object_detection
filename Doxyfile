@@ -117,7 +117,7 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 INPUT                  = /home/dario/catkin_ws/src/object_detection/src
-INPUT                  += README.md
+INPUT                  += MAINPAGE.md
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \

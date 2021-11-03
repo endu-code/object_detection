@@ -3,6 +3,8 @@ devel
 logs
 to_do
 .catkin_workspace
+MAINPAGE.md
+Doxyfile
 #.gitignore
 
 # delete cach if git ignore doesnt work
