@@ -6,6 +6,9 @@ to detect shapes and match them against a set of samples. From those samples the
 will be send via ROS-Message for other ROS nodes to subscribe to.
 
 The Goal is that those coordinates can be used for picking up workpieces in an industrial application.
+The package is written to use in our own production of high-precision workpieces.
+
+See [www.paoluzzo.ch](https://www.paoluzzo.ch/) for more information about our company!
 
 <p align="center">
   <img src="doc/img/Pao_Logo.jpg" />
@@ -25,22 +28,23 @@ follow the installation guide [here](http://wiki.ros.org/noetic/Installation) fo
 Follow [this Tutorial](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html) for installing OpenCV
 
 **Install Object Detection Package**
+
 Set up a catkin workspace following [this Tutorial](http://wiki.ros.org/catkin/Tutorials), then clone the repository into the src/ folder inside your catkin workspace.
 Use catkin_make to compile.
 
 ```sh
-$ cd ~/catkin_ws/src
-$ git clone -b master git@github.com:endu-code/object_detection.git
-$ cd ..
-$ catkin_make
-$ source devel/setup.bash
+cd ~/catkin_ws/src
+git clone -b master git@github.com:endu-code/object_detection.git
+cd ..
+catkin_make
+source devel/setup.bash
 ```
 **Run the code**
 
 roslaunch object_detection object_detection.launch will run the example code.
 
 ```sh
-$ roslaunch object_detection object_detection.launch
+roslaunch object_detection object_detection.launch
 ```
 
 **Adapt the code for your needs**
